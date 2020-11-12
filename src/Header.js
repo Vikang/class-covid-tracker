@@ -8,7 +8,7 @@ function Header() {
             <img 
                 className="logo" 
                 src={ClassLogo} 
-                alt="Class Logo" />
+                />
 
             <div className="header__nav">
                 <div className="header__option">
