@@ -27,10 +27,10 @@
 /******************************/
 // connecting to DB on CS server
 
-$username = 'your-computingID';
-$password = 'your-password';
+$username = 'vxw6ta_a';
+$password = 'F4ll2020!!';
 $host = 'usersrv01.cs.virginia.edu';
-$dbname = 'your-computingID';
+$dbname = 'vxw6ta';
 
 /******************************/
 

@@ -1,6 +1,6 @@
 <?php
 require('connectdb.php');
-require('friend_db.php');
+require('covid_db.php');
 
 $friends = getAllFriends();
 $friend_to_update = null;
