@@ -53,6 +53,7 @@ function Appointment() {
             <form
                 onSubmit={submit}
             >
+                <h1>Request an Appointment</h1>
                 <label className="question">Choose an available day for your appointment: </label>
                 <DatePicker 
                     selected={selectedDate} 
