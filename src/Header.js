@@ -1,24 +1,29 @@
 import React from 'react'
 import './Header.css';
 import ClassLogo from './class-logo.svg';
+import { Link } from 'react-router-dom'
 
 function Header() {
     return (
         <div className="header">
             <img 
                 className="logo" 
-                src={ClassLogo} 
+                src={ClassLogo}
+                alt="logo" 
                 />
 
             <div className="header__nav">
-                <div className="header__option">
-                    <span className="header__optionLineOne">
-                        Hello Guest
-                    </span>
-                    <span className="header__optionLineTwo">
-                        Sign In
-                    </span>    
-                </div>
+                <Link to='/login'>
+                    <div className="header__option">
+                        <span className="header__optionLineOne">
+                            Hello Guest
+                        </span>
+                        <span className="header__optionLineTwo">
+                            Sign In
+                        </span>    
+                    </div>
+                </Link>
+                <Link to='/account'>
                 <div className="header__option">
                     <span className="header__optionLineOne">
                         Edit
@@ -27,14 +32,18 @@ function Header() {
                         My Account
                     </span> 
                 </div>
+                </Link>
+                <Link to='/report'>
                 <div className="header__option">
                     <span className="header__optionLineOne">
                         Report
                     </span>
                     <span className="header__optionLineTwo">
-                        Positive Result
+                        Health Status
                     </span> 
                 </div>
+                </Link>
+                <Link to='/appointment'>
                 <div className="header__option">
                     <span className="header__optionLineOne">
                         Request
@@ -43,6 +52,8 @@ function Header() {
                         Appointment
                     </span> 
                 </div>
+                </Link>
+                <Link to='/'>
                 <div className="header__option">
                     <span className="header__optionLineOne">
                         COVID-19
@@ -50,7 +61,8 @@ function Header() {
                     <span className="header__optionLineTwo">
                         Tracker
                     </span> 
-                </div>    
+                </div>
+                </Link>    
             </div>
         </div>
     )
