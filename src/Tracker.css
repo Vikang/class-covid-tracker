@@ -13,16 +13,6 @@ body {
   padding: 20px;
 }
 
-.app__navigation {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  background-color: white;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
 .app__dropdown {
   background-color: white;
 }
@@ -45,7 +35,7 @@ body {
 }
 
 .app__left {
-  flex: 90%;
+  flex: 0.9;
   padding-right: 10px;
 }
 
