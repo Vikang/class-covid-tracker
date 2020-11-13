@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 
 const submit = e => {
     e.preventDefault(); //prevent page from refreshing
-
+    alert('You have submitted the form.')
     //fancy deployment login here
 }
 const status = [
@@ -40,7 +40,7 @@ render(Report);
             <h2 className="report__header">CS 4750 COVID Tracker</h2>
             <div className="report__container">
                 <h1>Report Health Status</h1>
-                <form>
+                <form onSubmit={submit}>
                     <label className="report__title">
                         Your Health Status
                     </label>
@@ -60,7 +60,8 @@ render(Report);
                     <label className="report__title">
                         Symptoms (Select all that apply)
                     </label>
-                        <Multiselect data={symptoms} />
+                        <Multiselect 
+                        data={symptoms} />
                     <button 
                     className="report__reportButton"
                     type="submit"
