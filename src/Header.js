@@ -22,6 +22,7 @@ function Header() {
                         </span>    
                     </div>
                 </Link>
+                <Link to='/account'>
                 <div className="header__option">
                     <span className="header__optionLineOne">
                         Edit
@@ -30,6 +31,8 @@ function Header() {
                         My Account
                     </span> 
                 </div>
+                </Link>
+                <Link to='/report'>
                 <div className="header__option">
                     <span className="header__optionLineOne">
                         Report
@@ -38,6 +41,8 @@ function Header() {
                         Positive Result
                     </span> 
                 </div>
+                </Link>
+                <Link to='/appointment'>
                 <div className="header__option">
                     <span className="header__optionLineOne">
                         Request
@@ -46,6 +51,8 @@ function Header() {
                         Appointment
                     </span> 
                 </div>
+                </Link>
+                <Link to='/'>
                 <div className="header__option">
                     <span className="header__optionLineOne">
                         COVID-19
@@ -53,7 +60,8 @@ function Header() {
                     <span className="header__optionLineTwo">
                         Tracker
                     </span> 
-                </div>    
+                </div>
+                </Link>    
             </div>
         </div>
     )

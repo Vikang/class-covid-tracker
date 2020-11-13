@@ -1,30 +1,39 @@
-body,
-html {
-  height: 100%;
-}
-
-/* The hero image */
-.hero__image {
-  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://www.kansashealthsystem.com/-/media/Project/Website/Hero/COVID_19_iS1210596217_hero.jpg?h=586&w=1440&la=en&hash=3A4249B74E86D825663533596DB0C1E58E2E2115");
-
-  /* Set a specific height */
-  height: 50%;
-
-  /* Position and center the image to scale nicely on all screens */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-
-/* Place text in the middle of the image */
-.hero__text {
+.home {
+  display: flex;
   text-align: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1500px;
+}
+
+.home__row {
+  display: flex;
+  z-index: 1;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/* Centered text */
+.centered {
   position: absolute;
+  justify-content: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+}
+
+.home__image {
+  width: 100%;
+  z-index: -1;
+  margin-bottom: -50px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.home__header {
+  padding-bottom: 10px;
+}
+
+.home__button {
+  margin-top: 20px;
 }

@@ -20,3 +20,9 @@ body {
   padding: 20px;
   width: 100%;
 }
+
+.app__home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
