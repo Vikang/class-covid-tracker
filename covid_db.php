@@ -87,7 +87,7 @@ function logIn($computingId, $password){
 	return false;
 }
 
-function logHealthStatus($computingId, $severity, $status, $symptoms){
+function logHealthStatus($computingId, $severity, $status, $symptoms, $location){
 	global $db;
 	$query = "SELECT max(number) FROM `health_status` where computing_id = :computingId group by computing_id";
 	$statement = $db->prepare($query);
@@ -105,6 +105,16 @@ function logHealthStatus($computingId, $severity, $status, $symptoms){
 	$statement->execute();
 	// $num = $statement->fetchAll();
 	$statement->closecursor();
+	$date = date('Y-m-d');
+	$query2 = "INSERT INTO 'logs' VALUES (:computingId, :date, :number, :student_location";
+	$statement2 = $db->prepare($query2);
+	$statement2->bindValue(':computingId', $computingId);
+	$statement2->bindValue(':date', $date);
+	$statement2->bindValue(':number', $num);
+	$statement2->bindValue(':student_location', $location);
+	$statement2->execute();
+	$statement2->closecursor();
+
 }
 
 
@@ -114,7 +124,7 @@ function addStudent($computingId, $first, $last, $pass, $email){
 	$statement = $db->prepare($query);
 	$statement->bindValue(':computingId', $computingId);
 	$results = $statement->fetchAll();
-	if($results == 1){
+	if($results > 0){
 		$statement->closecursor();
 
 		return false;
