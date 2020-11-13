@@ -39,7 +39,7 @@ render(Report);
             />
             <h2 className="report__header">CS 4750 COVID Tracker</h2>
             <div className="report__container">
-                <h1>Report Positive Result</h1>
+                <h1>Report Health Status</h1>
                 <form>
                     <label className="report__title">
                         Your Health Status

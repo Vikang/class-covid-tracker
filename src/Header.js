@@ -39,7 +39,7 @@ function Header() {
                         Report
                     </span>
                     <span className="header__optionLineTwo">
-                        Positive Result
+                        Health Status
                     </span> 
                 </div>
                 </Link>
