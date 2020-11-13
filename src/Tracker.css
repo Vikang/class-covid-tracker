@@ -45,7 +45,8 @@ body {
 }
 
 .app__left {
-  flex: 0.9;
+  flex: 90%;
+  padding-right: 10px;
 }
 
 .app__right {
