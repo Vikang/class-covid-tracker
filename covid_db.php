@@ -18,6 +18,62 @@
 //                Thus, be sure to match the name; a mismatch is ignored.
 //      execute() actually executes the SQL statement
 
+function getHospitalAvailability($hospital_name){
+	global $db;
+	$query = "SELECT * from 'hospital_availability' where hospital_name = :name";
+	$statement = $db->prepare($query);
+	$statement->bindValue(':name', $hospital_name);
+	$statement->execute();
+	$results = $statement->fetchAll();
+	$statement->closecursor();
+	return $results;
+}
+
+function requestAppointment($hospital, $date, $time, $details, $physician, $computingId){
+	global $db;
+	$query = "SELECT max(appointment_id) from appointment";
+	$statement = $db->prepare($query);
+	$statement->execute();
+	$statement->closecursor();
+	$appointID = $statement->fetch();
+	$appointID = $appointID + 1;
+	$query2 = "SELECT * from hospital_availability where hospital_name = :name and available_time = :time and physician_name = :physician";
+	$statement2 = $db->prepare($query2);
+	$statement2->bindValue(':name', $hospital);
+	$statement2->bindValue(':time', $time);
+	$statement2->bindValue(':physician', $physician);
+	$statement2->execute();
+	$results = $statement2->fetchAll();
+	$statement2->closecursor();
+	if(count($results) == 0){
+		return false;
+	}
+	$query3 = "DELETE FROM hospital_availability where hospital_name = :name and available_time = :time and physician_name = :physician";
+	$statement3 = $db->prepare($query3);
+	$statement3->bindValue(':name', $hospital);
+	$statement3->bindValue(':time', $time);
+	$statement3->bindValue(':physician', $physician);
+	$statement3->execute();
+	$statement3->closecursor();
+
+	$query4 = "INSERT INTO appointment VALUES(:appointID, :appt_date, :appt_time, :details, :physician)";
+	$statement4 = $db->prepare($query4);
+	$statement4->bindValue(':appointID', $appointID);
+	$statement4->bindValue(':appt_date', $date);
+	$statement4->bindValue(':appt_time', $time);
+	$statement4->bindValue(':details', $details);
+	$statement4->bindValue(':physician', $physician);
+	$statement4->execute();
+	$statement4->closecursor();
+
+	$query5 = "INSERT INTO requests VALUES(:appointID, :computingID)";
+	$statement5 = $db->prepare($query5);
+	$statement5->bindValue(':appointID', $appointID);
+	$statement5->bindValue(':computingID', $computingId);
+	$statement5->execute();
+	$statement5->closecursor();
+	return true;
+}
 function logIn($computingId, $password){
 	global $db;
 	$query = "SELECT password FROM uva_student";
@@ -96,6 +152,15 @@ function updateStudent($computingId, $first, $last, $pass, $email)
 	$statement->closeCursor();
 }
 
+function getHospitals(){
+	global $db;
+	$query = "SELECT * from 'hospital'";
+	$statement = $db->prepare($query);
+	$statement->execute();
+	$results = $statement->fetchAll();
+	$statement->closecursor();
+	return $results;
+}
 // function getAllFriends()
 // {
 // 	global $db;
