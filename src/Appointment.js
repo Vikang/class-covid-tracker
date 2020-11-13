@@ -53,13 +53,13 @@ function Appointment() {
             <form
                 onSubmit={submit}
             >
-                <label className="question">Choose an available day for your appoinmtment: </label>
+                <label className="question">Choose an available day for your appointment: </label>
                 <DatePicker 
                     selected={selectedDate} 
                     onChange={date => setSelectedDate(date)}
                     dateFormat='MM/dd/yyyy'
                 />
-                <label className="question">Choose an available time for your appoinmtment</label>
+                <label className="question">Choose an available time for your appointment</label>
                 <Multiselect 
                       data={times} /> 
                 <label className="question">
