@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-const express = require("express");
-const mysql = require("mysql");
+// const express = require("express");
+// const mysql = require("mysql");
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,21 +13,21 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-const app = express();
+// const app = express();
 
-app.use(express.json());
+// app.use(express.json());
 
-const db = mysql.createConnection({
-  user: "vxw6ta_a",
-  host: "usersrv01.cs.virginia.edu",
-  password: "F4ll2020!!",
-  database: "vxwt6ta",
-});
+// const db = mysql.createConnection({
+//   user: "vxw6ta_a",
+//   host: "usersrv01.cs.virginia.edu",
+//   password: "F4ll2020!!",
+//   database: "vxwt6ta",
+// });
 
 
-app.listen(3001, () =>{
-  console.log("running server");
-});
+// app.listen(3001, () =>{
+  // console.log("running server");
+// });
 // $username = 'vxw6ta_a';
 // $password = 'F4ll2020!!';
 // $host = 'usersrv01.cs.virginia.edu';

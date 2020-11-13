@@ -1,4 +1,4 @@
-import * as mysql from 'mysql';
+import mysql from 'mysql';
 import config from '../config';
 
 import uvastudent from './uvastudent';
