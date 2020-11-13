@@ -8,7 +8,8 @@ function Header() {
         <div className="header">
             <img 
                 className="logo" 
-                src={ClassLogo} 
+                src={ClassLogo}
+                alt="logo" 
                 />
 
             <div className="header__nav">

@@ -1,12 +1,12 @@
-.register {
+.report {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.register__header {
+.report__header {
   margin-bottom: 10px;
 }
-.register__logo {
+.report__logo {
   margin-top: 10px;
   margin-bottom: 10px;
   object-fit: contain;
@@ -15,8 +15,8 @@
   margin-left: auto;
 }
 
-.register__container {
-  width: 300px;
+.report__container {
+  width: 400px;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -26,28 +26,28 @@
   padding: 20px;
 }
 
-.register__container > h1 {
+.report__container > h1 {
   font-weight: 500;
   margin-bottom: 20px;
 }
 
-.register__container > form > h5 {
+.report__container > form > h5 {
   margin-bottom: 5px;
 }
 
-.register__container > form > input {
+.report__container > form > input {
   height: 30px;
   margin-bottom: 10px;
   background-color: white;
   width: 98%;
 }
 
-.register__container > form > p {
+.report__container > form > p {
   font-size: 12px;
   text-align: center;
 }
 
-.register__registerButton {
+.report__reportButton {
   background: #f0ae4b;
   border-radius: 2px;
   width: 100%;
