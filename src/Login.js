@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
-
+import { Link } from 'react-router-dom'
 function Login() {
     const [computingID, setComputingID] = useState('');
     const [password, setPassword] = useState('');
@@ -11,11 +11,11 @@ function Login() {
         //fancy deployment login here
     }
 
-    const register = e => {
+    /*const register = e => {
         e.preventDefault();
          //fancy deployment register here
     }
-
+    */
     return (
         <div className="login">
             <img
@@ -49,12 +49,14 @@ function Login() {
                     By signing-in you agree to the CS 4750 COVID-19 TRACKER Conditions of Use. Please
                     see our Privacy Notice, our Cookies Notice and our Interest-Based Ads Notice.
                 </p>
-
-                <button 
-                onClick={register}
-                className='login__registerButton'>
-                Create your CS 4750 COVID TRACKER Account
-                </button>
+                <Link to ="/register">
+                    <button 
+                    renderAs="button"
+                    //onClick={register}
+                    className='login__registerButton'>
+                    Create your CS 4750 COVID TRACKER Account
+                    </button>
+                </Link>
             </div>       
         </div>
     )
