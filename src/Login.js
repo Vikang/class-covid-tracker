@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 
 function Login() {
-    const [email, setEmail] = useState('');
+    const [computingID, setComputingID] = useState('');
     const [password, setPassword] = useState('');
 
     const signIn = e => {
@@ -27,9 +27,9 @@ function Login() {
             <div className="login__container">
                 <h1>Sign-in</h1>
                 <form>
-                    <h5>UVA E-mail</h5>
-                    <input type='text'value={email} 
-                    onChange= {e => setEmail(e.target.value)}
+                    <h5>UVA Computing ID</h5>
+                    <input type='text'value={computingID} 
+                    onChange= {e => setComputingID(e.target.value)}
                     />
 
                     <h5>Password</h5>
