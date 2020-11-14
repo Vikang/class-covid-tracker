@@ -1,0 +1,33 @@
+.appointment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.appointment__container {
+  width: 300px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  background-color: white;
+  padding: 20px;
+}
+.appointment__container > h1 {
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.appointment__appointmentButton {
+  align-items: center;
+  justify-content: center;
+  background: #f0ae4b;
+  border-radius: 2px;
+  width: 100%;
+  height: 30px;
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: #a88734 #9c7e31 #846a29;
+  margin-bottom: 30px;
+}

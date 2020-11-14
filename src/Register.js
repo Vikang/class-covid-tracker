@@ -46,10 +46,12 @@ function Register() {
                         className="register__registerButton">
                         Register
                     </button>
-                    <p>Already have an account?</p>
+                    <p>Already have an account?</p> 
+                    <p>
                     <Link to='/login'>
-                        <p>Login</p>
+                        Login
                     </Link>
+                    </p>
                 </form>
             </div>
         </div>

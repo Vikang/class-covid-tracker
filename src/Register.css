@@ -42,9 +42,9 @@
   width: 98%;
 }
 
-.register__container > p {
-  margin-top: 15px;
+.register__container > form > p {
   font-size: 12px;
+  text-align: center;
 }
 
 .register__registerButton {
@@ -55,4 +55,5 @@
   border: 1px solid;
   margin-top: 10px;
   border-color: #a88734 #9c7e31 #846a29;
+  margin-bottom: 30px;
 }

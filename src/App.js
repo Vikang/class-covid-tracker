@@ -5,8 +5,11 @@ import Tracker from './Tracker';
 import Login from './Login';
 import Register from './Register';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Appointment from './Appointment';
+import Report from './Report';
+import Account from './Account';
 
-
+//need to add path for account
 function App() {
     return (  
         <Router>
@@ -16,13 +19,22 @@ function App() {
                     <Route path="/login">  
                         <Login/>
                     </Route>
+                    <Route path="/account">  
+                        <Account/>
+                    </Route>
                     <Route path="/register">  
                         <Register/>
                     </Route>
+                    <Route path="/appointment">  
+                        <Appointment/>
+                    </Route>
+                    <Route path="/report">  
+                        <Report/>
+                    </Route>
                     <Route path="/">
                         <div className="app__home">
-                        <Home/>
-                        <Tracker/>
+                            <Home/>
+                            <Tracker/>
                         </div>
                     </Route>
                 </Switch>

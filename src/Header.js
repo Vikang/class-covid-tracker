@@ -8,7 +8,8 @@ function Header() {
         <div className="header">
             <img 
                 className="logo" 
-                src={ClassLogo} 
+                src={ClassLogo}
+                alt="logo" 
                 />
 
             <div className="header__nav">
@@ -38,7 +39,7 @@ function Header() {
                         Report
                     </span>
                     <span className="header__optionLineTwo">
-                        Positive Result
+                        Health Status
                     </span> 
                 </div>
                 </Link>

@@ -1,4 +1,5 @@
 import React from 'react'; //rfce
+import { Link } from 'react-router-dom'
 import "./Home.css"
 
 
@@ -12,10 +13,15 @@ function Home() {
                     alt=""
                 />
                 <div class="centered">
-                    <h1 className="home__header">CS 4750 Fall 2020 Class</h1>
-                    <p>Are you in the CS 4750 Fall 2020 Class?</p>
-                    <p>Login or Create an Account to track your health status now!</p>
-                    <button className="home__button">My Account</button>
+                    <h1 className="home__header">Welcome CS 4750 Fall 2020 Student</h1>
+                    <p>Have you tested positive for COVID-19?</p>
+                    <p>Please track your health status now!</p>
+                    <Link to ="/report">
+                    <button 
+                        renderAs="button"
+                        className="home__button">Report Positive Result
+                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
