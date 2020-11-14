@@ -10,7 +10,7 @@ const db = mysql.createPool({
   password: "lvDM0m3nt!",
   database: "vxw6ta"
 })
-const app = express();
+// const app = express();
 app.get('/', (req, res)=> {
     res.send("hello world");
 })
