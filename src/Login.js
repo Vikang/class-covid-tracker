@@ -8,8 +8,13 @@ function Login() {
 
     const signIn = e => {
         e.preventDefault(); //prevent page from refreshing
-        Axios.get('http://localhost:3001/').then(()=>{
-        alert("ALDFJKSD");
+        Axios.get('http://localhost:3001/api/signin', { params: {
+            computingID: computingID, 
+            password: password
+        }
+            
+        }).then(()=>{
+            alert(computingID);
         });
         //fancy deployment login here
     };
