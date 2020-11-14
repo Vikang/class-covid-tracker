@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Appointment from './Appointment';
 import Report from './Report';
 import Account from './Account';
+import Rating from './Rating';
 
 //need to add path for account
 function App() {
@@ -30,6 +31,9 @@ function App() {
                     </Route>
                     <Route path="/report">  
                         <Report/>
+                    </Route>
+                    <Route path="/rating">  
+                        <Rating/>
                     </Route>
                     <Route path="/">
                         <div className="app__home">
