@@ -15,15 +15,15 @@ app.get('/', (req, res)=> { //req = required, res = response
     //req used to get information from front end
     //detects when we reach certain routes in browser
 
-    /************TEST********************
-     app.get('/bruh', (req, res)=> {
+    app.get('/bruh', (req, res)=> {
     res.send("hasdfd");
     })
-    
+
     const sqlInsert = "INSERT INTO rating (appointment_id, numeric_rating, description) VALUES ('134', '5', 'great');"
     db.query(sqlInsert, (err, result)=> {
         res.send("hello world"); //sending that info to front end
     })
+    /************TEST********************
     **************TEST******************/
     
 }); 
