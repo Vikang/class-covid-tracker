@@ -10,14 +10,17 @@ const db = mysql.createPool({
   password: "lvDM0m3nt!",
   database: "vxw6ta"
 })
+const app = express();
+app.get('/', (req, res)=> {
+    res.send("hello world");
+})
+app.get('/bruh', (req, res)=> {
+    res.send("hasdfd");
+})
 
 app.get('/', (req, res)=> { //req = required, res = response
     //req used to get information from front end
     //detects when we reach certain routes in browser
-
-    app.get('/bruh', (req, res)=> {
-    res.send("hasdfd");
-    })
 
     const sqlInsert = "INSERT INTO rating (appointment_id, numeric_rating, description) VALUES ('134', '5', 'great');"
     db.query(sqlInsert, (err, result)=> {
@@ -27,6 +30,9 @@ app.get('/', (req, res)=> { //req = required, res = response
     **************TEST******************/
     
 }); 
+app.get('/bruh', (req, res)=> {
+    res.send("hasdfd");
+})
 
 app.listen(3001, () => {
     console.log("running on port 3001");
