@@ -30,9 +30,6 @@ app.get('/', (req, res)=> { //req = required, res = response
     **************TEST******************/
     
 }); 
-app.get('/bruh', (req, res)=> {
-    res.send("hasdfd");
-})
 
 app.listen(3001, () => {
     console.log("running on port 3001");
