@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom'
+import Axios from 'axios';
 function Login() {
     const [computingID, setComputingID] = useState('');
     const [password, setPassword] = useState('');
 
     const signIn = e => {
         e.preventDefault(); //prevent page from refreshing
-
+        Axios.get('http://localhost:3001/').then(()=>{
+        alert("ALDFJKSD");
+        });
         //fancy deployment login here
-    }
+    };
 
     /*const register = e => {
         e.preventDefault();
