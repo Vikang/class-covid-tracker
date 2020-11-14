@@ -5,7 +5,7 @@ import Axios from 'axios';
 function Login() {
     const [computingID, setComputingID] = useState('');
     const [password, setPassword] = useState('');
-
+    const [user, setUser] = useState('');
     const signIn = e => {
         e.preventDefault(); //prevent page from refreshing
         Axios.get('http://localhost:3001/api/signin', { params: {
@@ -13,8 +13,10 @@ function Login() {
             password: password
         }
             
-        }).then(()=>{
-            alert(computingID);
+        }).then((response)=>{
+            // alert(response.data);
+            setUser(computingID);
+            alert(user);
         });
         //fancy deployment login here
     };

@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import './Register.css';
-
+import Axios from 'axios';
 function Register() {
     const [computingID, setComputingID] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const register = e => {
-        e.preventDefault();
+        e.preventDefault(); //prevent page from refreshing
+        Axios.post('http://localhost:3001/api/register', { 
+            computingID: computingID, 
+            password: password,
+            confirmPassword: confirmPassword
         
-         //fancy deployment register here
+            
+        }).then((response)=>{
+            // alert(response.data);
+            // setUser(computingID);
+            alert(response.data);
+        });
     }
 
     return (
