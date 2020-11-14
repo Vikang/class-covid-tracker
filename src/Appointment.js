@@ -1,12 +1,13 @@
-import React, { useReducer, useState } from "react";
-import { DropdownList, SelectList, Multiselect } from 'react-widgets'
+import React, { useState } from "react";
+import './Appointment.css';
+import { SelectList, Multiselect } from 'react-widgets'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import './Appointment.css';
+
 
 
 function Appointment() {
-    const [submitting, setSubmitting] = useState(false);
+    //const [submitting, setSubmitting] = useState(false);
     const [selectedDate, setSelectedDate] = useState(false);
     const hospital = [
         {id:'student', name:"UVA Student Health and Wellness"},
@@ -35,11 +36,7 @@ function Appointment() {
     'Diarrhea'];
     const submit = e => {
         e.preventDefault();
-        setSubmitting(true);
-    
-        setTimeout(() => {
-            setSubmitting(false);
-          }, 3000)
+        //setSubmitting(true);
       }
     return (
         <div className="appointment">
@@ -50,36 +47,36 @@ function Appointment() {
             />
             <h2 className="appointment__header">CS 4750 COVID Tracker</h2>
             <div className="appointment__container">
-            <form
-                onSubmit={submit}
-            >
-                <h1>Request an Appointment</h1>
-                <label className="question">Choose an available day for your appointment: </label>
-                <DatePicker 
-                    selected={selectedDate} 
-                    onChange={date => setSelectedDate(date)}
-                    dateFormat='MM/dd/yyyy'
-                />
-                <label className="question">Choose an available time for your appointment</label>
-                <Multiselect 
-                      data={times} /> 
-                <label className="question">
-                    <p name="Location">Hospital Location</p>
-                    <SelectList 
-                        data={hospital}
-                        valueField='id'
-                        textField='name'
-                        />
-                </label>
-                <label className="question">Please list all your symptoms</label>
-                <Multiselect 
-                      data={symptoms} /> 
-                <button 
-                    classname="appointment__appointmentButton" 
-                    type="submit">
-                    Submit
-                </button>
-            </form>
+                <form
+                    onSubmit={submit}
+                >
+                    <h1>Request an Appointment</h1>
+                    <label className="question">Choose an available day for your appointment: </label>
+                    <DatePicker 
+                        selected={selectedDate} 
+                        onChange={date => setSelectedDate(date)}
+                        dateFormat='MM/dd/yyyy'
+                    />
+                    <label className="question">Choose an available time for your appointment</label>
+                    <Multiselect 
+                        data={times} /> 
+                    <label className="question">
+                        <p name="Location">Hospital Location</p>
+                        <SelectList 
+                            data={hospital}
+                            valueField='id'
+                            textField='name'
+                            />
+                    </label>
+                    <label className="question">Please list all your symptoms</label>
+                    <Multiselect 
+                        data={symptoms} /> 
+                    <button 
+                        classname="appointment__appointmentButton" 
+                        type="submit">
+                        Submit
+                    </button>
+                </form>
             </div>
             <h2>Your List of Appointment Requests</h2>
         </div>
