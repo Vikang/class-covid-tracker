@@ -3,11 +3,16 @@ import './Appointment.css';
 import { SelectList, Multiselect } from 'react-widgets'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import Axios from 'axios';
 
-
-
+const submit = e => {
+    e.preventDefault(); //prevent page from refreshing
+    alert('You have submitted the form.')
+    //fancy deployment login here
+}
 function Appointment() {
-    //const [submitting, setSubmitting] = useState(false);
+    /*
+    const [submitting, setSubmitting] = useState(false);
     const [selectedDate, setSelectedDate] = useState(false);
     const hospital = [
         {id:'student', name:"UVA Student Health and Wellness"},
@@ -34,10 +39,32 @@ function Appointment() {
     'Congestion or runny nose',
     'Nausea or vomiting',
     'Diarrhea'];
-    const submit = e => {
-        e.preventDefault();
-        //setSubmitting(true);
-      }
+    */
+   const [computingID, setComputingID] = useState('');
+   const [apptID, setApptID] = useState('');
+    const [day, setDay] = useState('');
+    const [time, setTime] = useState('');
+    const [location, setLocation] = useState('');
+    const [symptoms, setSymptoms] = useState('');
+
+    const appointment = e => {
+        e.preventDefault(); //prevent page from refreshing
+        Axios.post('http://localhost:3001/api/appointment', {
+            computingID : computingID,
+            apptID : apptID,
+            day: day,
+            time: time, 
+            location: location,
+            symptoms: symptoms
+              
+        }).then((response)=>{
+            // alert(response.data);
+            // setUser(computingID);
+            alert(response.data);
+        });
+}
+
+      
     return (
         <div className="appointment">
             <img
@@ -51,29 +78,34 @@ function Appointment() {
                     onSubmit={submit}
                 >
                     <h1>Request an Appointment</h1>
-                    <label className="question">Choose an available day for your appointment: </label>
-                    <DatePicker 
-                        selected={selectedDate} 
-                        onChange={date => setSelectedDate(date)}
-                        dateFormat='MM/dd/yyyy'
+                    <h5>UVA Computing ID</h5>
+                    <input type='text'value={computingID} 
+                    onChange= {e => setComputingID(e.target.value)}
                     />
-                    <label className="question">Choose an available time for your appointment</label>
-                    <Multiselect 
-                        data={times} /> 
-                    <label className="question">
-                        <p name="Location">Hospital Location</p>
-                        <SelectList 
-                            data={hospital}
-                            valueField='id'
-                            textField='name'
-                            />
-                    </label>
-                    <label className="question">Please list all your symptoms</label>
-                    <Multiselect 
-                        data={symptoms} /> 
+                    <h5>Appointment ID</h5>
+                    <input type='text'value={apptID} 
+                    onChange= {e => setApptID(e.target.value)}
+                    />
+                    <h5>What day(s) are you avaliable?</h5>
+                    <input type='text'value={day} 
+                    onChange= {e => setDay(e.target.value)}
+                    />
+                    <h5>What time do you prefer to meet?</h5>
+                    <input type='text'value={time} 
+                    onChange= {e => setTime(e.target.value)}
+                    />
+                    <h5>Which hospital would you like to meet at? (UVA Student Health and Wellness, UVA University Hospital, UVA Children's Hospital)</h5>
+                    <input type='text'value={location} 
+                    onChange= {e => setLocation(e.target.value)}
+                    />
+                    <h5>Symptoms(please list all)</h5>
+                    <input type='text'value={symptoms} 
+                    onChange= {e => setSymptoms(e.target.value)}
+                    />
                     <button 
                         classname="appointment__appointmentButton" 
-                        type="submit">
+                        type="submit"
+                        onClick={appointment}>
                         Submit
                     </button>
                 </form>

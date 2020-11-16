@@ -1,8 +1,10 @@
-import React from 'react';
+import React , { useState } from 'react';
 import './Report.css';
 import { DropdownList, SelectList, Multiselect } from 'react-widgets'
 import "react-widgets/dist/css/react-widgets.css";
 import { render } from '@testing-library/react';
+import { Link } from 'react-router-dom'
+import Axios from 'axios';
 
 const submit = e => {
     e.preventDefault(); //prevent page from refreshing
@@ -29,6 +31,29 @@ const symptoms = ['Fever or chills',
     'Diarrhea'];
 
 function Report() {
+    const [computingID, setComputingID] = useState('');
+    const [reportID, setReportID] = useState('');
+    const [status, setStatus] = useState('');
+    const [severity, setSeverity] = useState('');
+    const [symptoms, setSymptoms] = useState('');
+
+    const report = e => {
+        e.preventDefault(); //prevent page from refreshing
+        Axios.post('http://localhost:3001/api/report', {
+            computingID : computingID,
+            reportID: reportID,
+            status: status, 
+            severity: severity,
+            symptoms: symptoms
+              
+        }).then((response)=>{
+            // alert(response.data);
+            // setUser(computingID);
+            alert(response.data);
+        });
+}
+
+
 render(Report);
     return (
         <div className="report">
@@ -41,31 +66,32 @@ render(Report);
             <div className="report__container">
                 <h1>Report Health Status</h1>
                 <form onSubmit={submit}>
-                    <label className="report__title">
-                        Your Health Status
-                    </label>
-                        <SelectList 
-                        data={status}
-                        valueField='id'
-                        textField='name'
-                         />
-                    <label className="report__title">
-                        Your Location
-                    </label>
-                        <SelectList data={location} />
-                    <label className="report__title">
-                        Severity (No symptoms"0"---Moderate "3"---Severe "5")
-                    </label>
-                        <DropdownList data={severity} />
-                    <label className="report__title">
-                        Symptoms (Select all that apply)
-                    </label>
-                        <Multiselect 
-                        data={symptoms} />
+                    
+                    <h5>UVA Computing ID</h5>
+                    <input type='text'value={computingID} 
+                    onChange= {e => setComputingID(e.target.value)}
+                    />
+                    <h5>Report ID Number</h5>
+                    <input type='text'value={reportID} 
+                    onChange= {e => setReportID(e.target.value)}
+                    />
+                    <h5>Status of Illness? (Positive, Negative, Recovered)</h5>
+                    <input type='text'value={status} 
+                    onChange= {e => setStatus(e.target.value)}
+                    />
+                    <h5>Severity (0-5)</h5>
+                    <input type='text'value={severity} 
+                    onChange= {e => setSeverity(e.target.value)}
+                    />
+                    <h5>Symptoms(please list all)</h5>
+                    <input type='text'value={symptoms} 
+                    onChange= {e => setSymptoms(e.target.value)}
+                    />
+
                     <button 
                     className="report__reportButton"
                     type="submit"
-                    onClick={submit}>
+                    onClick={report}>
                         Submit
                     </button>
                 </form>

@@ -56,5 +56,7 @@ con.connect(function(err) {
         console.log("Number of rows affected : " + result.affectedRows);
         console.log("Number of records affected with warning : " + result.warningCount);
         console.log("Message from MySQL Server : " + result.message);
+
+
     });
   });

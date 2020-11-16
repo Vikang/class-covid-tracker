@@ -40,6 +40,37 @@ app.get('/api/signin', (req, res)=> {
     // console.log(data);
     // res.send("false");
 });
+app.post('/api/report', (req, res)=> {
+    const computing_id = req.body.computingID;
+    const report_id = req.body.reportID;
+    const status = req.body.status;
+    const severity = req.body.severity;
+    const symptoms = req.body.symptoms;
+
+    // const b;
+    var data = [];
+    var number = 1; // place holder
+    var insert_sql = [
+        [computing_id, report_id, status, severity, symptoms]
+    ];
+    con.query("INSERT INTO health_status (computing_id,number,status,severity,symptoms) VALUES ?", [insert_sql], function (err, result, fields) {
+    if (err) {
+        res.send("You submitted a duplicate computing ID and report ID. Try again.");
+    }
+    else{
+        console.log(result);
+        console.log("Number of rows affected : " + result.affectedRows);
+        console.log("Number of records affected with warning : " + result.warningCount);
+        console.log("Message from MySQL Server : " + result.message);
+        res.send("Thank you for reporting your health status!");
+    }
+    
+    });
+    // console.log(data);
+    // res.send("false");
+    //*/
+});
+
 app.post('/api/register', (req, res)=> {
     // console.log(req);
     const computingID = req.body.computingID;
