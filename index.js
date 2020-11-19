@@ -4,14 +4,14 @@ const app = express()
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv'); //protect passwords
 const cookieParser = require('cookie-parser')
-const authController = require('../controllers/auth')
+const authController = require('./controllers/auth')
 //var appointmentsRouter = require('./views/appointment');
 
 dotenv.config({path: './.env' });
 
 var cors = require('cors')
 var mysql = require('mysql');
-const router = require('../routes/pages');
+const router = require('./routes/pages');
 
 
 
@@ -46,8 +46,8 @@ var con = mysql.createConnection({
   })
 
   //USER - DEFINE ROUTES
-  app.use('/', require('../routes/pages.js'));
-  app.use('/auth', require('../routes/auth'));
+  app.use('/', require('./routes/pages.js'));
+  app.use('/auth', require('./routes/auth'));
 
   //Parse URL-encoded bodies (as wend by HTML forms)
   app.use(express.urlencoded({extended: false}));
