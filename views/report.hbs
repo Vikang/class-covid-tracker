@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <img className="logo" src='./class-logo.svg' alt="logo" class="d-inline-block align-top" alt="">
+        <ul>
+            <li><a href="/">Welcome</a></li>
+            {{#if student}}
+            <li><a href="/profile">{{student.first_name}}'s Profile</a></li>
+            <li><a href="/tracker">Class Tracker</a></li>
+            <li><a href="/report">Report Health Status</a></li>
+            <li><a href="/appt">Request Appointment</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+            {{else}}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                Report Health Status Form
+            </div>
+            <div class="card-body">
+                <form id="reportform" action="/auth/report" method="POST">
+                    <div class="form-group col-md-4">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" required>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="email">Location</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="location" id="charlottesville"
+                                value="Charlottesville">
+                            <label class="form-check-label" for="charlottesville">Charlottesville</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="location" id="notongrounds"
+                                value="Not On Grounds">
+                            <label class="form-check-label" for="notongrounds">Not On Grounds</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="status">Health Status</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="positive" value="positive">
+                            <label class="form-check-label" for="positive">I have tested positive for
+                                COVID-19</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="negative" value="negative">
+                            <label class="form-check-label" for="negative">I have recovered from COVID-19</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="severity">Severity (No symptoms"0"---Moderate "3"---Severe "5")</label>
+                        <select name="severity" id="severity" class="form-control" required>
+                            <option selected>Choose...</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for=" symptoms">Symptoms</label>
+                        <textarea class="form-control" id="symptoms" name="symptoms" rows="4" cols="50"
+                            form="reportform" required placeholder="Optional"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                </form>
+            </div>
+        </div>
+
+        {{#if message }}
+        <h4 class="alert alert-danger mt-4">{{message}}</h4>
+        {{/if}}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

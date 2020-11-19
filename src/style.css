@@ -1,0 +1,39 @@
+nav {
+  background-color: #f5f6fa;
+  color: #fff;
+  padding: 0px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav li a {
+  color: rgb(71, 70, 70);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 40px 20px;
+  float: right;
+}
+
+nav li a:hover {
+  color: rgb(75, 87, 247);
+  text-decoration: none;
+}
+
+body {
+  color: #1a202c;
+  text-align: left;
+  background-color: #d0ddec;
+}
+.main-body {
+  padding: 15px;
+}

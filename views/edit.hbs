@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <img className="logo" src='./class-logo.svg' alt="logo" class="d-inline-block align-top" alt="">
+        <ul>
+            <li><a href="/">Welcome</a></li>
+            {{#if student}}
+            <li><a href="/profile">{{student.first_name}}'s Profile</a></li>
+            <li><a href="/tracker">Class Tracker</a></li>
+            <li><a href="/report">Report Health Status</a></li>
+            <li><a href="/appt">Request Appointment</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+            {{else}}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                Edit Profile
+            </div>
+            <div class="card-body">
+                <form action="/auth/edit" method="POST">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" readonly
+                            placeholder="First Name" value={{student.first_name}}>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" readonly
+                            placeholder="Last Name" value={{student.last_name}}>
+                    </div>
+                    <div class="form-group">
+                        <label for="computing_id">UVA Computing ID</label>
+                        <input type="text" class="form-control" id="computing_id" name="computing_id" readonly
+                            placeholder="Computing ID" value={{student.computing_id}}>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uva_student_email">Email Address</label>
+                        <input type="email" class="form-control" id="uva_student_email" name="uva_student_email"
+                            required placeholder="Email" value={{student.uva_student_email}}>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone"
+                            value={{student.phone}}>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        {{#if message }}
+        <h4 class="alert alert-danger mt-4">{{message}}</h4>
+        {{/if}}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
