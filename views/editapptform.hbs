@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <img className="logo" src='./class-logo.svg' alt="logo" class="d-inline-block align-top" alt="">
+        <ul>
+            <li><a href="/">Welcome</a></li>
+            {{#if student}}
+            <li><a href="/profile">{{student.first_name}}'s Profile</a></li>
+            <li><a href="/tracker">Class Tracker</a></li>
+            <li><a href="/report">Report Health Status</a></li>
+            <li><a href="/appt">Request Appointment</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+            {{else}}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                Edit Appointment
+            </div>
+            <div class="card-body">
+                <form id="apptform" action="/edit/{{appointment.appointment_id}}" method="POST">
+                    <div class="form-group col-md-6">
+                        <label for="appointment_id">Appointment ID #</label>
+                        <input type="text" class="form-control" id="appointment_id" name="appointment_id" readonly
+                            placeholder="Appointment ID" value={{appointment.appointment_id}}>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="appt_date">Date </label>
+                        <br>
+                        <small>(Current Date Scheduled): {{appointment.appt_date}}</small>
+                        <input type="date" class="form-control" id="appt_date" value="appt_date" name="appt_date"
+                            required>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="appt_time">Time</label>
+                        <br>
+                        <small>(Current Time Scheduled: {{appointment.appt_time}})</small>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="appt_time" id="time1"
+                                value="9:00 am - 10:00 am">
+                            <label class="form-check-label" for="time1">9:00 am - 10:00 am</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="appt_time" id="time2"
+                                value="10:00 am - 11:00 am">
+                            <label class="form-check-label" for="time2">10:00 am - 11:00 am</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="appt_time" id="time3"
+                                value="11:00 am - 12:00 pm">
+                            <label class="form-check-label" for="time3">11:00 am - 12:00 pm</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="appt_time" id="time4"
+                                value="12:00 pm - 1:00 pm">
+                            <label class="form-check-label" for="time4">12:00 pm - 1:00 pm</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="appt_time" id="time5"
+                                value="1:00 pm - 2:00 pm">
+                            <label class="form-check-label" for="time5">1:00 pm - 2:00 pm</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="appt_time" id="time6"
+                                value="2:00 pm - 3:00 pm">
+                            <label class="form-check-label" for="time6">2:00 pm - 3:00 pm</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="appt_time" id="time7"
+                                value="3:00 pm - 4:00 pm">
+                            <label class="form-check-label" for="time7">3:00 pm - 4:00 pm</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="appt_time" id="time8"
+                                value="4:00 pm - 5:00 pm">
+                            <label class="form-check-label" for="time8">4:00 pm - 5:00 pm</label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-6">
+                        <label for="appt_location">Location</label>
+                        <select name="appt_location" id="appt_location" class="form-control" required
+                            value="appointment.appt_location">
+                            <option value="UVA Student Health and Wellness">UVA Student Health and Wellness</option>
+                            <option value="UVA University Hospital">UVA University Hospital</option>
+                            <option value="UVA Children's Hospital">UVA Children's Hospital</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for=" details">Details (Additional notes, symptoms, etc.)</label>
+                        <textarea class="form-control" id="details" name="details" rows="4" cols="50" form="apptform"
+                            required placeholder="Optional">{{appointment.details}}</textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+
+        {{#if message }}
+        <h4 class="alert alert-danger mt-4">{{message}}</h4>
+        {{/if}}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -54,5 +54,18 @@
   },
   "devDependencies": {
     "typescript": "^4.0.5"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vikang/covid-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vikang/covid-tracker/issues"
+  },
+  "homepage": "https://github.com/Vikang/covid-tracker#readme"
 }
